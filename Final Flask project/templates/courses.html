@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-between mb-3">
+    <h4>Courses</h4>
+    <a href="/add_course" class="btn btn-primary">Add Course</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Course Name</th>
+                    <th>Duration (in Months)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in courses %}
+                <tr>
+                    <td>{{ c[0] }}</td>
+                    <td>{{ c[1] }}</td>
+                    <td>{{ c[2] }}</td>
+                    <td>
+                        <a href="/edit_course/{{ c[0] }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/delete_course/{{ c[0] }}"
+                           onclick="return confirm('Are you sure?')"
+                           class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <ul class="pagination">
+            {% for p in range(1, total_pages + 1) %}
+            <li class="page-item">
+                <a class="page-link" href="/courses?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

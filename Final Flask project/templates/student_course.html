@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4>Student - Course Mapping</h4>
+
+<div class="card shadow-sm col-md-6 mb-4">
+    <div class="card-body">
+        <form method="POST">
+            <select name="student_id" class="form-select mb-3" required>
+                <option value="">-- Select Student --</option>
+                {% for s in students %}
+                <option value="{{ s[0] }}">{{ s[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <select name="course_id" class="form-select mb-3" required>
+                <option value="">-- Select Course --</option>
+                {% for c in courses %}
+                <option value="{{ c[0] }}">{{ c[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <button class="btn btn-success">Save</button>
+        </form>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in mappings %}
+                <tr>
+                    <td>{{ m[0] }}</td>
+                    <td>{{ m[1] }}</td>
+                    <td>{{ m[2] }}</td>
+                    <td>
+                        <a href="/delete_student_course/{{ m[0] }}"
+                           onclick="return confirm('Are you sure?')"
+                           class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

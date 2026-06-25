@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h4>Teacher - Course Mapping</h4>
+
+<div class="card shadow-sm col-md-6 mb-4">
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="mb-3">
+                <select name="teacher_id" class="form-select" required>
+                    <option value="">-- Select Teacher --</option>
+                    {% for t in teachers %}
+                    <option value="{{ t[0] }}">
+                        {{ t[1] }} - {{ t[3] }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <select name="course_id" class="form-select" required>
+                    <option value="">-- Select Course --</option>
+                    {% for c in courses %}
+                    <option value="{{ c[0] }}">
+                        {{ c[1] }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button class="btn btn-success">Save</button>
+
+        </form>
+
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Teacher</th>
+                    <th>Designation</th>
+                    <th>Course</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in mappings %}
+                <tr>
+                    <td>{{ m[0] }}</td>
+                    <td>{{ m[1] }}</td>
+                    <td>{{ m[2] }}</td>
+                    <td>{{ m[3] }}</td>
+                    <td>
+                        <a href="/delete_teacher_course/{{ m[0] }}"
+                           onclick="return confirm('Are you sure?')"
+                           class="btn btn-danger btn-sm">
+                           Delete
+                        </a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">
+                        No mappings available
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
