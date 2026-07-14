@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<h3>Welcome {{ username }}</h3>
+
+<a href="/logout" class="btn btn-danger">
+Logout
+</a>
+<a href="{{ url_for('profile') }}">My Profile</a>
+
+<a href="{{ url_for('update_profile') }}">Edit Profile</a>
+
+<a href="{{ url_for('change_password') }}">Change Password</a>
+
+{% endblock %}

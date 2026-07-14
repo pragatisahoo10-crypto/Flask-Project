@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+</head>
+<body>
+
+<h2>Add Product</h2>
+
+<form method="POST">
+
+    <p>
+        Product Name<br>
+        <input type="text" name="name" required>
+    </p>
+
+    <p>
+        Description<br>
+        <textarea name="description"></textarea>
+    </p>
+
+    <p>
+        Price<br>
+        <input type="number"
+               step="0.01"
+               name="price"
+               required>
+    </p>
+
+    <p>
+        Stock<br>
+        <input type="number"
+               name="stock"
+               required>
+    </p>
+
+    <button type="submit">
+        Save Product
+    </button>
+
+</form>
+
+</body>
+</html>
