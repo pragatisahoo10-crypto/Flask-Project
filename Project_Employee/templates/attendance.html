@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Attendance</h2>
+
+<form method="POST">
+
+<select name="employee_id" class="form-control mb-2">
+
+    {% for emp in employees %}
+    <option value="{{ emp.id }}">
+        {{ emp.name }}
+    </option>
+    {% endfor %}
+
+</select>
+
+<select name="status" class="form-control mb-2">
+    <option>Present</option>
+    <option>Absent</option>
+</select>
+
+<button class="btn btn-success">
+    Save Attendance
+</button>
+
+</form>
+
+<hr>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Employee</th>
+    <th>Date</th>
+    <th>Status</th>
+</tr>
+
+{% for row in attendance_records %}
+<tr>
+    <td>{{ row.name }}</td>
+    <td>{{ row.attendance_date }}</td>
+    <td>{{ row.status }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

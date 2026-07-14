@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Payroll</h2>
+
+<form method="POST">
+
+<select name="employee_id" class="form-control mb-2">
+
+    {% for emp in employees %}
+    <option value="{{ emp.id }}">
+        {{ emp.name }}
+    </option>
+    {% endfor %}
+
+</select>
+
+<input class="form-control mb-2"
+       name="month"
+       placeholder="Month">
+
+<input class="form-control mb-2"
+       name="bonus"
+       placeholder="Bonus">
+
+<input class="form-control mb-2"
+       name="deduction"
+       placeholder="Deduction">
+
+<select name="status" class="form-control mb-2">
+    <option>Paid</option>
+    <option>Pending</option>
+</select>
+
+<button class="btn btn-success">
+    Generate Payroll
+</button>
+
+</form>
+
+<hr>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Employee</th>
+    <th>Month</th>
+    <th>Bonus</th>
+    <th>Deduction</th>
+    <th>Net Salary</th>
+    <th>Status</th>
+</tr>
+
+{% for row in payroll_records %}
+<tr>
+    <td>{{ row.name }}</td>
+    <td>{{ row.pay_month }}</td>
+    <td>{{ row.bonus }}</td>
+    <td>{{ row.deduction }}</td>
+    <td>{{ row.net_salary }}</td>
+    <td>{{ row.status }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

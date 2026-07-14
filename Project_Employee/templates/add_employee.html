@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Add Employee</h2>
+
+<form method="POST">
+
+<input class="form-control mb-2" name="emp_code" placeholder="Employee Code">
+
+<input class="form-control mb-2" name="name" placeholder="Name">
+
+<input class="form-control mb-2" name="email" placeholder="Email">
+
+<input class="form-control mb-2" name="department" placeholder="Department">
+
+<input class="form-control mb-2" name="designation" placeholder="Designation">
+
+<input type="date" class="form-control mb-2" name="joining_date">
+
+<input class="form-control mb-2" name="basic_salary" placeholder="Salary">
+
+<button class="btn btn-success">
+    Save
+</button>
+
+</form>
+
+{% endblock %}

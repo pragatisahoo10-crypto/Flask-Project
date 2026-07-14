@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Edit Employee</h2>
+
+<form method="POST">
+
+<input class="form-control mb-2" name="emp_code" value="{{ employee.emp_code }}">
+
+<input class="form-control mb-2" name="name" value="{{ employee.name }}">
+
+<input class="form-control mb-2" name="email" value="{{ employee.email }}">
+
+<input class="form-control mb-2" name="department" value="{{ employee.department }}">
+
+<input class="form-control mb-2" name="designation" value="{{ employee.designation }}">
+
+<input type="date"
+       class="form-control mb-2"
+       name="joining_date"
+       value="{{ employee.joining_date }}">
+
+<input class="form-control mb-2"
+       name="basic_salary"
+       value="{{ employee.basic_salary }}">
+
+<button class="btn btn-primary">
+    Update
+</button>
+
+</form>
+
+{% endblock %}

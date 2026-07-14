@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Employees</h2>
+
+<a href="{{ url_for('add_employee') }}"
+class="btn btn-success mb-3">
+Add Employee </a>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>ID</th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Designation</th>
+    <th>Salary</th>
+    <th>Action</th>
+</tr>
+
+{% for emp in employees %}
+<tr>
+    <td>{{ emp.id }}</td>
+    <td>{{ emp.emp_code }}</td>
+    <td>{{ emp.name }}</td>
+    <td>{{ emp.email }}</td>
+    <td>{{ emp.department }}</td>
+    <td>{{ emp.designation }}</td>
+    <td>{{ emp.basic_salary }}</td>
+
+    <td>
+        <a href="{{ url_for('edit_employee', id=emp.id) }}"
+           class="btn btn-warning btn-sm">
+           Edit
+        </a>
+
+        <a href="{{ url_for('delete_employee', id=emp.id) }}"
+           class="btn btn-danger btn-sm">
+           Delete
+        </a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
